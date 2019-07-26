@@ -1,0 +1,25 @@
+---
+title: "Growsquares Data Science Assignment"
+author: "Sara Kim"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Q1 : Plot the Daily GHI (Global Horizontal Irradiance) value over time for each year in a figure with a legend. GHI to sunlight intensity is like Fahrenheit to temperature. Briefly write down your conclusions drawn from analyzing the data over the course of the provided years detecting if there is any seasonality within the sunlight values is very important as well as understanding max/min, monthly average, etc.
+
+A similar type of project is often encountered in which we must acquire data, understand and conceptualize trends in order to inform the approach to our model in terms of plant recommendation.
+
+```{r}
+ghi_df <-
+    list.files(path = './data', pattern = "*.csv") %>% 
+    map_df(~read_csv(paste('./data/',., sep = ""), skip = 2))
+```
+
+```{r}
+ghi_df %>% is.na() %>% sum()
+```
+
